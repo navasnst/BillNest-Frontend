@@ -33,13 +33,19 @@ export default function MainLayout({ children }) {
     checkBusiness()
   }, [])
 
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("businessId")
+    navigate("/login")
+  }
+
   if (loading) return <p className="p-6">Loading...</p>
 
   return (
     <div className="flex h-screen">
 
       {/* Sidebar */}
-      <div className="w-60 bg-gray-900 text-white p-4">
+      <div className="w-60 bg-gray-900 text-white pr-25 pl-2 h-screen overflow-y-auto">
         <h1 className="text-xl mb-6">BillNest</h1>
 
         <nav className="flex flex-col gap-3">
@@ -67,9 +73,20 @@ export default function MainLayout({ children }) {
       {/* Main */}
       <div className="flex-1 bg-gray-100">
         {/* Navbar */}
-        <div className="bg-white p-4 shadow">
-          <h2>Dashboard</h2>
-        </div>
+        <button
+          onClick={() => navigate("/login")}
+          className="bg-gray-500 text-white px-4 py-2 rounded mt-4 ml-4"
+        >
+          ← Back to Login
+        </button>
+
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded gap-2 mt-4 ml-4 items-center"
+        >
+          Logout
+        </button>
+
 
         <div className="p-6">
           {children}

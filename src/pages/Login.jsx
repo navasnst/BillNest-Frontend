@@ -40,6 +40,18 @@ export default function Login() {
                 <button className="w-full bg-green-500 text-white p-2 mt-2">
                     Login
                 </button>
+
+                <p className="text-sm text-center mt-4">
+                    Don't have an account?
+                </p>
+
+                <button
+                    type="button"
+                    onClick={() => navigate("/register")}
+                    className="w-full border border-green-500 text-green-500 p-2 mt-2"
+                >
+                    Register
+                </button>
             </form>
         </div>
     )

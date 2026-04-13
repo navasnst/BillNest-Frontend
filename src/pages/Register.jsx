@@ -44,6 +44,18 @@ export default function Register() {
                 <button className="w-full bg-blue-500 text-white p-2 mt-2">
                     Register
                 </button>
+
+                <p className="text-sm text-center mt-4">
+                    Already have an account?
+                </p>
+
+                <button
+                    type="button"
+                    onClick={() => navigate("/login")}
+                    className="w-full border border-blue-500 text-blue-500 p-2 mt-2"
+                >
+                    Login
+                </button>
             </form>
         </div>
     )

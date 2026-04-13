@@ -125,7 +125,6 @@ export default function InvoicePreview() {
                 {/* ITEMS */}
                 <table className="w-full border mb-5 mt-5">
                     <thead>
-                        {/* <tr className="bg-gray-200"> */}
                         <tr className="bg-white">
                             <th>Name</th>
                             <th>Qty</th>
@@ -157,13 +156,6 @@ export default function InvoicePreview() {
                 </div>
 
                 <p><strong>Payment Mode:</strong> {invoice.paymentMode}</p>
-
-                {/* <p>
-                    <strong>Status:</strong>{" "}
-                    <span className={invoice.paymentStatus === "Paid" ? "text-black-500" : "text-black-500"}>
-                        {invoice.paymentStatus}
-                    </span>
-                </p> */}
 
                 {/* FOOTER */}
                 {/* <div className="mt-10 pt-4 border-t text-center text-gray-500 text-sm flex flex-col items-center gap-2"> */}
