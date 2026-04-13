@@ -45,7 +45,7 @@ export default function MainLayout({ children }) {
     <div className="flex h-screen">
 
       {/* Sidebar */}
-      <div className="w-60 bg-gray-900 text-white pr-25 pl-2 h-screen overflow-y-auto">
+      <div className="w-60 bg-gray-900 text-white pr-25 pl-5 pt-5 pb-5 h-screen overflow-y-auto">
         <h1 className="text-xl mb-6">BillNest</h1>
 
         <nav className="flex flex-col gap-3">
