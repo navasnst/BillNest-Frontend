@@ -52,7 +52,7 @@ export default function Register() {
                 <button
                     type="button"
                     onClick={() => navigate("/login")}
-                    className="w-full border border-blue-500 text-blue-500 p-2 mt-2"
+                    className=" border border-blue-500 text-blue-500 p-2 mt-2  rounded-lg mx-auto block text-center"
                 >
                     Login
                 </button>

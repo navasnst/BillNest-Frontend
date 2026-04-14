@@ -21,6 +21,8 @@ import Supplier from "./pages/Supplier";
 import Ledger from "./pages/Ledger";
 import Report from "./pages/Report";
 import Capital from "./pages/Capital";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 
 
@@ -34,6 +36,8 @@ export default function App() {
                 <Route path="/" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
                 <Route path="/products" element={<ProtectedRoute> <Products /> </ProtectedRoute>} />
                 <Route path="/customers" element={<ProtectedRoute> <Customers /> </ProtectedRoute>} />
                 <Route path="/invoices" element={<ProtectedRoute> <Invoices /> </ProtectedRoute>} />

@@ -48,10 +48,16 @@ export default function Login() {
                 <button
                     type="button"
                     onClick={() => navigate("/register")}
-                    className="w-full border border-green-500 text-green-500 p-2 mt-2"
+                    className="border border-green-500 text-green-500 p-2 mt-2 rounded-lg mx-auto block text-center"
                 >
                     Register
                 </button>
+                <p
+                    className="text-sm text-blue-500 cursor-pointer mt-2"
+                    onClick={() => navigate("/forgot-password")}
+                >
+                    Forgot Password?
+                </p>
             </form>
         </div>
     )
