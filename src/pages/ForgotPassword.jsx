@@ -27,8 +27,8 @@ export default function ForgotPassword() {
                     className="w-full mb-2 p-2 border"
                 />
 
-                <button className="w-full bg-blue-500 text-white p-2">
-                    Send Reset Link
+                <button  disabled={loading}>
+                    {loading ? "Sending..." : "Send Reset Link"}
                 </button>
             </form>
         </div>
