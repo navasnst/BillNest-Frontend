@@ -47,10 +47,12 @@ export default function MainLayout({ children }) {
       {/* Sidebar */}
       <div className="w-60 bg-gray-900 text-white pr-25 pl-5 pt-5 pb-5 h-screen overflow-y-auto">
         <h1 className="text-xl mb-6 text-blue-300 font-serif italic">BillNest</h1>
-        
+
 
         <nav className="flex flex-col gap-3 italic">
           <Link to="/">Dashboard</Link>
+          <Link to="/quick-bill">Quick Bill</Link>
+          <Link to="/quick-invoices">Quick Invoice List</Link>
           <Link to="/products">Products</Link>
           <Link to="/customers">Customers</Link>
           <Link to="/invoices">Invoices</Link>

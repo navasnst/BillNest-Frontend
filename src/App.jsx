@@ -23,7 +23,8 @@ import Report from "./pages/Report";
 import Capital from "./pages/Capital";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-
+import QuickBill from "./pages/QuickBill";
+import QuickInvoiceList from "./pages/QuickInvoiceList";
 
 
 
@@ -56,6 +57,8 @@ export default function App() {
                 <Route path="/ledger" element={<ProtectedRoute> <Ledger /> </ProtectedRoute>} />
                 <Route path="/reports" element={<ProtectedRoute> <Report /> </ProtectedRoute>} />
                 <Route path="/capital" element={<ProtectedRoute> <Capital /> </ProtectedRoute>} />
+                <Route path="/quick-bill" element={<ProtectedRoute> <QuickBill /> </ProtectedRoute>} />
+                <Route path="/quick-invoices" element={<ProtectedRoute> <QuickInvoiceList /> </ProtectedRoute>} />
 
 
 

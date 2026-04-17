@@ -41,7 +41,7 @@ export default function Register() {
                 <input name="password" type="password" placeholder="Password" onChange={handleChange} className="w-full mb-2 p-2 border" />
                 <input name="businessName" placeholder="Business Name" onChange={handleChange} className="w-full mb-2 p-2 border" />
 
-                <button className="w-full bg-blue-500 text-white p-2 mt-2">
+                <button className="w-full bg-blue-500 text-white p-2 mt-2 rounded-lg cursor-pointer hover:bg-blue-600">
                     Register
                 </button>
 
@@ -52,7 +52,7 @@ export default function Register() {
                 <button
                     type="button"
                     onClick={() => navigate("/login")}
-                    className=" border border-blue-500 text-blue-500 p-2 mt-2  rounded-lg mx-auto block text-center"
+                    className=" border border-blue-500 text-blue-500 p-2 mt-2  rounded-lg mx-auto block text-center hover:bg-blue-300 hover:text-white transition-colors cursor-pointer"
                 >
                     Login
                 </button>
