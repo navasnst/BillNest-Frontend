@@ -25,6 +25,11 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import QuickBill from "./pages/QuickBill";
 import QuickInvoiceList from "./pages/QuickInvoiceList";
+import AdminLogin from "./pages/AdminLogin";
+import AdminRegister from "./pages/AdminRegister";
+import AdminDashboard from "./pages/AdminDashboard";
+import RoleSelect from "./pages/RoleSelect";
+import AdminRoute from "./routes/AdminRoute";
 
 
 
@@ -34,7 +39,8 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
+                <Route path="/" element={<RoleSelect />} />
+                <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -61,7 +67,9 @@ export default function App() {
                 <Route path="/quick-invoices" element={<ProtectedRoute> <QuickInvoiceList /> </ProtectedRoute>} />
 
 
-
+                <Route path="/admin/register" element={<AdminRegister />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin/dashboard" element={<AdminRoute> <AdminDashboard /> </AdminRoute>} />
 
             </Routes>
         </BrowserRouter>

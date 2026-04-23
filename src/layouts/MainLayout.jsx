@@ -6,10 +6,13 @@ import InstallButton from "../components/InstallButton"
 export default function MainLayout({ children }) {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const checkBusiness = async () => {
       try {
+        const res2 = await API.get("/auth/me")
+        setUser(res2.data)
         const res = await API.get("/business")
 
         if (res.data.length === 0) {
@@ -39,18 +42,34 @@ export default function MainLayout({ children }) {
     navigate("/login")
   }
 
+  const getDaysLeft = (date) => {
+    const now = new Date();
+    const expiry = new Date(date);
+    const diff = expiry - now;
+
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  };
+
+  const handleRequestAccess = async () => {
+    try {
+      await API.post("/auth/request-access");
+      alert("Request sent to admin");
+    } catch (err) {
+      alert("Failed to send request");
+    }
+  };
+
   if (loading) return <p className="p-6">Loading...</p>
 
   return (
     <div className="flex h-screen">
-
       {/* Sidebar */}
       <div className="w-60 bg-gray-900 text-white pr-25 pl-5 pt-5 pb-5 h-screen overflow-y-auto">
         <h1 className="text-xl mb-6 text-blue-300 font-serif italic">BillNest</h1>
 
 
         <nav className="flex flex-col gap-3 italic">
-          <Link to="/">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
           <Link to="/quick-bill">Quick Bill</Link>
           <Link to="/quick-invoices">Quick Invoice List</Link>
           <Link to="/products">Products</Link>
@@ -90,6 +109,53 @@ export default function MainLayout({ children }) {
           Logout
         </button>
 
+        {user && (
+          <div className="mb-4 p-4 rounded-xl shadow bg-white mx-5 text-center mt-5">
+
+            {!user.isApproved && (
+              getDaysLeft(user.trialExpiresAt) > 0 ? (
+                <p className="text-green-600 font-semibold">
+                  🟢 Trial active: {getDaysLeft(user.trialExpiresAt)} days left
+                </p>
+              ) : (
+                <p className="text-red-600 font-semibold">
+                  🔴 Trial expired. Please make payment to continue.
+                </p>
+              )
+            )}
+
+            {user.isApproved && (
+              <p className="text-blue-600 font-semibold">
+                🔵 Subscription active till:{" "}
+                {new Date(user.subscriptionExpiresAt).toLocaleDateString()}
+              </p>
+            )}
+
+          </div>
+        )}
+
+        {user && getDaysLeft(user.trialExpiresAt) <= 0 && !user.isApproved && (
+          <div className="text-center">
+            <p className="text-red-600 font-semibold mb-2">
+              Trial expired. Request access to continue.
+            </p>
+
+            {/* 💰 Payment Info */}
+            <p className="text-sm text-gray-600 mt-2">
+              Pay via UPI: <strong>yourupi@bank</strong>
+            </p>
+            <p className="text-xs text-gray-400 mb-3">
+              After payment, click "Request Access"
+            </p>
+
+            <button
+              onClick={handleRequestAccess}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+            >
+              Request Access
+            </button>
+          </div>
+        )}
 
         <div className="p-6">
           {children}

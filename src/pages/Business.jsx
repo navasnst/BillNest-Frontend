@@ -33,7 +33,7 @@ export default function Business() {
 
             alert("Business Created ✅")
 
-            navigate("/")
+            navigate("/dashboard")
 
         } catch (err) {
             alert(err.response?.data?.error || "Error creating business")
